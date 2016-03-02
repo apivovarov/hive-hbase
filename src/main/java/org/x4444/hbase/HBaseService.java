@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class HBaseService {
 
-  static String readValue(HTable t1, String rowKey, String family, String field) {
+  public static String readValue(HTable t1, String rowKey, String family, String field) {
     try {
       Get get = new Get(Bytes.toBytes(rowKey));
       long t = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class HBaseService {
     }
   }
 
-  static HTable getHTable(String master, String tableName) {
+  public static HTable getHTable(String master, String tableName) {
     try {
       Configuration conf = getConf(master);
       HTable t1 = new HTable(conf, Bytes.toBytes(tableName));
@@ -39,7 +39,7 @@ public class HBaseService {
     }
   }
 
-  static Configuration getConf(String master) {
+  public static Configuration getConf(String master) {
     Configuration conf = HBaseConfiguration.create();
     conf.set("hbase.zookeeper.quorum", master);
     conf.set("fs.default.name", "hdfs://" + master + ":8020");
