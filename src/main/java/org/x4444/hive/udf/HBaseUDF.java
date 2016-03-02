@@ -10,7 +10,7 @@ public class HBaseUDF extends UDF {
 
   HTable t = null;
 
-  public Text evaluate(Text quorum, Text table, Text key, Text family, Text col) {
+  public Text evaluate(String quorum, String table, String key, String family, String col) {
     System.out.println("---------------------------------------");
     System.out.println("quorum: " + quorum);
     System.out.println("table: " + table);
@@ -21,12 +21,12 @@ public class HBaseUDF extends UDF {
 
     System.out.printf("Getting HTable...");
     if (t == null) {
-      t = HBaseService.getHTable(quorum.toString(), table.toString());
+      t = HBaseService.getHTable(quorum, table);
     }
     System.out.println("HTable: " + t);
 
     System.out.printf("Reading Column Value...");
-    String v1 = HBaseService.readValue(t, key.toString(), family.toString(), col.toString());
+    String v1 = HBaseService.readValue(t, key, family, col);
     System.out.println("Value: " + v1);
 
     System.out.println("---------------------------------------");
