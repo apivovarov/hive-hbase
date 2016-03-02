@@ -17,14 +17,14 @@ public class Main {
     String table = args[1];
     String key = args[2];
     String family = args[3];
-    String field = args[4];
+    String col = args[4];
 
     System.out.println("---------------------------------------");
     System.out.println("quorum: " + quorum);
     System.out.println("table: " + table);
     System.out.println("key: " + key);
     System.out.println("family: " + family);
-    System.out.println("field: " + field);
+    System.out.println("column: " + col);
     System.out.println("---------------------------------------");
 
     System.out.printf("Getting HTable...");
@@ -32,8 +32,8 @@ public class Main {
     System.out.println("HTable: " + t);
 
     try {
-      System.out.printf("Reading Field Value...");
-      String v1 = HBaseService.readValue(t, "1", "f", "v1");
+      System.out.printf("Reading Column Value...");
+      String v1 = HBaseService.readValue(t, key, family, col);
       System.out.println("Value: " + v1);
 
       System.out.println("---------------------------------------");
