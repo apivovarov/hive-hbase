@@ -32,7 +32,8 @@ public class HBaseUDF extends UDF {
     System.out.println("---------------------------------------");
     System.out.println("All Done");
     System.out.println("---------------------------------------");
-    return new Text(v1);
+
+    return v1 != null ? new Text(v1) : null;
   }
 
   @Override
